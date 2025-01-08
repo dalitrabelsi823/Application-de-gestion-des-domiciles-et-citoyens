@@ -11,6 +11,7 @@ namespace Examen.ApplicationCore.Interfaces
     {
         public float pourcentageJeune();
         public float pourcentageNonEduqués();
+        public List<Citoyen> CitoyensBatiment(int code);
         
     }
 }

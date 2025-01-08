@@ -1,4 +1,5 @@
 using Examen.ApplicationCore.Interfaces;
+using Examen.ApplicationCore.Services;
 using Examen.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
 // Injection de dépendance
 builder.Services.AddDbContext<DbContext, ExamenContext>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IServiceDomicile, ServiceDomicile>();
+builder.Services.AddScoped<IServiceCitoyen, ServiceCitoyen>();
 builder.Services.AddSingleton<Type>(t => typeof(GenericRepository<>));
+
 
 var app = builder.Build();
 

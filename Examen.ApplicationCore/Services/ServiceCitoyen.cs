@@ -14,6 +14,13 @@ namespace Examen.ApplicationCore.Services
         {
         }
 
+        public List<Citoyen> CitoyensBatiment(int code)
+        {
+            IEnumerable<Citoyen> listCitoyen = this.GetMany(c => c.MyDomiciliations.Any(d=>d.MyDomicile.BatimentFK==code));
+            return listCitoyen.ToList();
+           
+        }
+
         public float pourcentageJeune()
         {
             IEnumerable<Citoyen> listJeune = this.GetMany(c=>c.DateNaissance.Year>1989 && c.DateNaissance.Year <2006 );
